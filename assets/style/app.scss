@@ -89,11 +89,11 @@ nav.scrolled {
   font-family: 'Roboto';
 }
 .text-highlighted-1 {
-  font-size: 36px;
+  font-size: 35px;
   line-height: 44px;
 }
 .text-highlighted-2 {
-  font-size: 33px;
+  font-size: 32px;
   line-height: 44px;
 }
 
@@ -172,6 +172,9 @@ nav.scrolled {
 .timeline .swiper-pagination-bullet-active::before {
   -webkit-transform: scale(1);
   transform: scale(1);
+}
+.timeline .v-chip {
+  margin: 4px 5px;
 }
 .timeline .v-chip .v-chip__content {
   padding: 0 6px;
