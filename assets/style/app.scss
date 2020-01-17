@@ -109,38 +109,108 @@ nav.scrolled {
     left: 40px;
   }
 }
+.background-animated-colors {
+  position: absolute;
+  left: 0;
+  top: -70px;
+  width: 100%;
+  height: 115%;
+  opacity: 0.9;
+}
 /*** MENU **/
 .menu-items .v-btn {
   height: 28px !important;
   margin-left: 5px !important;
 }
-#granim-canvas {
-  position: absolute;
-  left: 0;
-  top: -70px;
-  width: 100%;
-  height: 110%;
+
+.timeline {
+  &__date {
+    font-size: 1.8em;
+    color: $gold;
+    font-style: italic;
+  }
+  &__role {
+    font-size: 2.6em;
+    line-height: 0.8em;
+    margin: 0;
+    padding: 8px 0;
+    transform: translate3d(20px, 0, 0);
+    transition: .2s ease .5s;
+  }
+  &__wrapper {
+    height: 400px;
+  }
+  &__content {
+    right: 23%;
+    position: absolute;
+    text-align: right;
+    width: 55%;
+  }
+  &__navigation {
+    background-size: 20px 20px;
+    top: auto;
+    left: auto;
+    width: 20px;
+    height: 20px;
+    margin-top: 0;
+    z-index: 2;
+    transition: .2s;
+    &.next {
+      right: 12%;
+      bottom: 0%;
+      transform: rotate(90deg);
+      &:hover {
+        transform: rotate(90deg) translate(3px, 0);
+      }
+    }
+    &.prev {
+      right: 12%;
+      top: 0%;
+      transform: rotate(90deg);
+      &:hover {
+        transform: rotate(90deg) translate(-3px, 0);
+      }
+    }
+  }
+  &__pagination{
+    display: flex;
+    right: 10% !important;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 18px;
+    z-index: 1;
+    &::before {
+      content: '';
+      position: absolute;
+      left: -30px;
+      top: 0;
+      height: 100%;
+      width: 1px;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    .swiper-pagination-bullet {
+      font-size:inherit;
+      transition: font-size 0.3s;
+      &:hover, &.swiper-pagination-bullet-active {
+        font-size: 1.1em;
+      }
+    }
+  }
 }
-.timeline .swiper-pagination {
-  right: 10% !important;
-  height: 100%;
-  flex-direction: column;
-  justify-content: center;
-  font-style: italic;
-  font-weight: 300;
-  font-size: 18px;
-  z-index: 1;
+.icon-next {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23d4a024'%2F%3E%3C%2Fsvg%3E");
+  &:hover { transform: translateX(3px); }
+}
+.icon-prev {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23d4a024'%2F%3E%3C%2Fsvg%3E");
+
+  &:hover { transform: translateX(-3px); }
 }
 
-.timeline .swiper-pagination::before {
-  content: '';
-  position: absolute;
-  left: -30px;
-  top: 0;
-  height: 100%;
-  width: 1px;
-  background-color: rgba(255, 255, 255, 0.2);
-}
+
 
 .timeline .swiper-pagination-bullet {
   width: auto;
@@ -149,7 +219,7 @@ nav.scrolled {
   opacity: 1;
   background: transparent;
   color: $gold;
-  margin: 15px 0 !important;
+  margin: 10px 0 !important;
   position: relative;
 }
 
@@ -238,5 +308,50 @@ nav.scrolled {
   }
   100% {
     transform: scale(0.8);
+  }
+}
+.card-animation {
+  &__container{
+    display: flex ;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 768px) {
+
+  .swiper-pagination {
+    display: none;
+  }
+  .timeline__content{
+    width: 100%;
+    right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .timeline {
+    &__date {
+      color: #c6a869;
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+    &__navigation {
+      &.next {
+        right: 5%;
+        top: 0%;
+        transform: rotate(0deg);
+        &:hover {
+          transform: rotate(0deg) translate(3px, 0);
+        }
+      }
+      &.prev {
+        left: 5%;
+        top: 0%;
+        transform: rotate(0deg);
+        &:hover {
+          transform: rotate(0deg) translate(-3px, 0);
+        }
+      }
+    }
   }
 }

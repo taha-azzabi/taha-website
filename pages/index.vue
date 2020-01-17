@@ -5,7 +5,7 @@
       style="position:fixed;left: 0;-webkit-filter: blur(3px);filter: blur(1px);"
       alt="Vuetify.js"
     />
-    <canvas id="granim-canvas" style="opacity: 0.9;" />
+    <canvas id="granim-canvas" class="background-animated-colors" />
     <v-flex xs12 sm12 md12>
       <v-card flat class="transparent">
         <v-container fluid grid-list-md class="pb-0 px-0">
@@ -13,23 +13,32 @@
             <v-flex xs12 sm3 md3>
               <v-card color="transparent fill-height" tile flat>
                 <v-card-text>
-                  <p class="text-highlighted-1 text-roboto mb-0">
-                    <span class="white--text">${ Bonjour :), je suis</span>
-                    <span class="gold--text"> Taha Azzabi</span>
-                  </p>
-                  <p class="text-highlighted-2 text-roboto">
-                    Développeur web basé à Paris }
-                  </p>
+                  <h1>
+                    <p class="text-highlighted-1 text-roboto mb-0">
+                      <span class="white--text">${ Bonjour :), je suis</span>
+                      <span class="gold--text"> Taha Azzabi</span>
+                    </p>
+                    <p class="text-highlighted-2 text-roboto">
+                      Développeur web basé à Paris }
+                    </p>
+                  </h1>
                 </v-card-text>
               </v-card>
             </v-flex>
             <v-flex xs12 sm1 md1>
-              <v-card color="transparent fill-height d-flex" tile flat>
-                <v-card-text class="px-0 flex-self-center">
+              <v-card
+                class="card-animation"
+                color="transparent fill-height d-flex"
+                tile
+                flat
+              >
+                <v-card-text
+                  class="card-animation__container px-0 flex-self-center"
+                >
                   <img
                     ref="cardOne"
                     src="~/assets/rotated-right-arrow-with-broken-line.png"
-                    class="responsive-img"
+                    class="card-animation__image responsive-img"
                     alt="Vuetify.js"
                   />
                 </v-card-text>
@@ -46,8 +55,15 @@
               </v-card>
             </v-flex>
             <v-flex xs12 sm1 md1>
-              <v-card color="transparent fill-height d-flex" tile flat>
-                <v-card-text class="px-0 flex-self-center">
+              <v-card
+                class="card-animation"
+                color="transparent fill-height d-flex"
+                tile
+                flat
+              >
+                <v-card-text
+                  class="px-0 flex-self-center card-animation__container"
+                >
                   <img
                     ref="cardThree"
                     src="~/assets/rotated-right-arrow-with-broken-line-bm.png"
@@ -146,6 +162,19 @@ export default {
         `,
       from: 0,
       to: 60
+    }
+  },
+  head() {
+    return {
+      title: 'Bonjour :), je suis Taha Azzabi Développeur web basé à Paris',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Polyvalent Senior JavaScript, développeur web doté d’une large expérience en backends,'
+        }
+      ]
     }
   },
   computed: {

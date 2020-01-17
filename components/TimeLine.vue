@@ -1,19 +1,25 @@
 <template>
   <div class="timeline">
-    <div v-swiper:mySwiper="swiperOption">
+    <div
+      ref="timeLineExperience"
+      v-swiper:mySwiper="swiperOption"
+      class="timeline__wrapper"
+    >
       <div class="swiper-wrapper">
         <div
           v-for="timeline in timelineData"
           :key="timeline.ID"
-          class="swiper-slide"
+          class="swiper-slide timeline__experience"
         >
-          <div class="time-line-content">
-            <span>{{ timeline.yearStart }} - {{ timeline.yearEnd }}</span>
-            <h2>{{ timeline.role }}</h2>
-            <h3>
+          <div class="timeline__content">
+            <span class="timeline__date">
+              {{ timeline.yearStart }} - {{ timeline.yearEnd }}
+            </span>
+            <h2 class="timeline__role">{{ timeline.role }}</h2>
+            <h3 class="timeline__compagny">
               {{ timeline.company.name }} - {{ timeline.company.location }}
             </h3>
-            <div>
+            <div class="timeline__tags">
               <v-chip
                 v-for="(keyWord, index) in renderKeyWord(timeline.keysWord)"
                 :key="index"
@@ -30,7 +36,15 @@
           </div>
         </div>
       </div>
-      <div class="swiper-pagination"></div>
+      <div
+        @click="prevSlide"
+        class="timeline__navigation prev icon-prev swiper-button-prev"
+      ></div>
+      <div
+        @click="nextSlide"
+        class="timeline__navigation next icon-next swiper-button-next"
+      ></div>
+      <div class="timeline__pagination swiper-pagination"></div>
     </div>
   </div>
 </template>
@@ -47,6 +61,9 @@ export default {
         slidesPerView: 1,
         spaceBetween: 30,
         mousewheel: true,
+        paginationClickable: true,
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
@@ -61,13 +78,24 @@ export default {
           progress: (e) => {
             this.initialSlide = e
           }
+        },
+        breakpoints: {
+          768: {
+            direction: 'horizontal'
+          }
         }
       },
       timelineData
     }
   },
+  computed: {
+    timeLineExperience() {
+      return this.$refs.timeLineExperience.swiper.slideNext()
+    }
+  },
   watch: {
     initialSlide(newPosition, oldPosition) {
+      console.log(newPosition)
       if (newPosition > oldPosition) {
         this.$nuxt.$emit('TIME_lINE_MOVE', 'down')
       } else {
@@ -75,24 +103,19 @@ export default {
       }
     }
   },
+  mounted() {},
   methods: {
     renderKeyWord(keysWord) {
       return keysWord.split(',')
+    },
+    nextSlide() {
+      this.$refs.timeLineExperience.swiper.slideNext()
+    },
+    prevSlide() {
+      this.$refs.timeLineExperience.swiper.slidePrev()
     }
   }
 }
 </script>
 
-<style scoped>
-.swiper-container {
-  width: 80%;
-  height: 300px;
-}
-.time-line-content {
-  right: 23%;
-  position: absolute;
-  /* max-width: 57%; */
-  text-align: right;
-  width: 55%;
-}
-</style>
+<style scoped></style>

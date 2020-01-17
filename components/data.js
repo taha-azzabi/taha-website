@@ -58,7 +58,7 @@ const timelineData = [
     `,
     fullDescription: '2009',
     yearStart: 'Oct 2019',
-    yearEnd: 'Avril 2019',
+    yearEnd: 'Avr 2019',
     backGround: 'Sans-titre-1.png'
   },
   {

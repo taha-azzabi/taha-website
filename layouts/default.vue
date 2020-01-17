@@ -21,10 +21,10 @@
         color="blue-grey lighten-4"
         target="_blank"
       >
-        Get Source code
+        <span class="hidden-sm-and-down">Get Source code</span>
         <v-icon right color="blue-grey lighten-4">fas fa-code fa-spin</v-icon>
       </v-btn>
-      <v-spacer />
+      <v-spacer class="hidden-sm-and-down" />
       <!-- SOCIAL ACCOUNTS -->
       <v-btn
         v-for="socialsAccount in socialsAccounts"
@@ -37,9 +37,9 @@
       >
         <v-icon size="20px">{{ socialsAccount.icon }}</v-icon>
       </v-btn>
-      <v-spacer />
+      <v-spacer class="hidden-sm-and-down" />
       <!-- MENU -->
-      <v-toolbar-items class="hidden-sm-and-down menu-items flex-item-center">
+      <v-toolbar-items class="menu-items flex-item-center">
         <v-btn
           nuxt
           text
@@ -57,10 +57,16 @@
           small
           target="_blank"
           color="blue-grey lighten-4"
+          class="hidden-sm-and-down"
         >
           Télécharger mon CV
         </v-btn>
-        <v-btn text outlined small color="blue-grey lighten-4"
+        <v-btn
+          text
+          outlined
+          small
+          color="blue-grey lighten-4"
+          class="hidden-sm-and-down"
           >Say Hello
           <div class="pulsating-circle"></div>
         </v-btn>
@@ -99,7 +105,7 @@ export default {
       snackbar: true,
       socialsAccounts,
       maintenanceText: `Hello :) Vous êtes en train de consulter une version privée en cours du développement.
-      Pas mal d’idées , animations, bug fix vont être mis en place prochainement`
+Pas mal d’idées, animations, bug fixes vont être mis en place prochainement`
     }
   },
   computed: {
